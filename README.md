@@ -18,12 +18,12 @@ $ UNSPLASH_ACCESS_KEY="YOUR-UNSPLASH-ACCESS-KEY-IN-EV" lein repl
 ## Usage
 For development with auto-reload namespaces: 
 ```bash
-    $ lein run-dev
+$ lein run-dev
 ```
 
 For production like just run:
 ```bash
-    $ lein run
+$ lein run
 ```
 
 ## License
