@@ -10,7 +10,7 @@ Based on config.clj.sample file create your own config.edn, you will need all Ap
 $ cp resources/config.edn.sample resources/config.edn
 ```
 
-Or you can set all keys in as environment variables.
+Or you can set all keys as environment variables.
 ```bash
 $ UNSPLASH_ACCESS_KEY="YOUR-UNSPLASH-ACCESS-KEY-IN-EV" lein repl
 ```
