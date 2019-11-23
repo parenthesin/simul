@@ -7,35 +7,24 @@ GraphQL BFF for our live demo Web App
 
 Based on config.clj.sample file create your own config.edn, you will need all Api Keys listed inside the sample file for this step.
 ```bash
-cp resources/config.edn.sample resources/config.edn
+$ cp resources/config.edn.sample resources/config.edn
 ```
 
-Or you can set all keys in as environment variables.
+Or you can set all keys as environment variables.
 ```bash
-UNSPLASH_ACCESS_KEY="YOUR-UNSPLASH-ACCESS-KEY-IN-EV" lein repl
+$ UNSPLASH_ACCESS_KEY="YOUR-UNSPLASH-ACCESS-KEY-IN-EV" lein repl
 ```
 
 ## Usage
+For development with auto-reload namespaces: 
+```bash
+$ lein run-dev
+```
 
-FIXME: explanation
-
-    $ java -jar simul-0.1.0-standalone.jar [args]
-
-## Options
-
-FIXME: listing of options this app accepts.
-
-## Examples
-
-...
-
-### Bugs
-
-...
-
-### Any Other Sections
-### That You Think
-### Might be Useful
+For production like just run:
+```bash
+$ lein run
+```
 
 ## License
 

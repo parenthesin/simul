@@ -1,1 +1,3 @@
-{:unsplash-access-key "YOUR-UNSPLASH-ACCESS-KEY"}
+{:webserver-port       3000
+ :cors-allowed-origins ".*"
+ :unsplash-access-key  "YOUR-UNSPLASH-ACCESS-KEY"}
