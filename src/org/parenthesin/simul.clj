@@ -1,7 +1,6 @@
 (ns org.parenthesin.simul
+  (:require [config.core :refer [env]])
   (:gen-class))
 
-(defn -main
-  "I don't do a whole lot ... yet."
-  [& args]
-  (println "Hello, World!"))
+(defn -main []
+  (println (:unsplash-access-key env)))
