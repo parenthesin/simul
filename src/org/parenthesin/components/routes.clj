@@ -5,6 +5,7 @@
   component/Lifecycle
   (start [this]
     (assoc this :routes routes))
-  (stop  [this] (dissoc this :routes)))
+  (stop  [this]
+    (dissoc this :routes)))
 
 (defn new-routes [routes] (map->Routes {:routes routes}))
