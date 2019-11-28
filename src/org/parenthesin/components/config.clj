@@ -9,4 +9,4 @@
   (stop  [this]
     (dissoc this :config)))
 
-(defn new-config [] (map->Config {:config env}))
+(defn new-config [] (map->Config env))
