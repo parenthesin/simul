@@ -2,7 +2,8 @@
   (:require [com.stuartsierra.component :as component]
             [io.pedestal.interceptor.helpers :refer [before]]
             [io.pedestal.http :as http]
-            [io.pedestal.http.route :as route]))
+            [io.pedestal.http.route :as route]
+            [io.pedestal.log :as log]))
 
 (defn- add-system [service]
   (before (fn [context] (assoc-in context [:request :components] service))))
@@ -51,8 +52,7 @@
 (defrecord WebServer [config routes storage]
   component/Lifecycle
   (start [this]
-    (println 
-      (str ";; Starting webserver on " (:webserver-port config)))
+    (log/info :msg (str "Starting webserver on " (:webserver-port config)))
     (assoc this :service
            (->> (base-service (:routes routes) config)
                 (system-init config)
@@ -61,7 +61,7 @@
                 http/start)))
 
   (stop [this]
-    (println (str ";; Stopping webserver"))
+    (log/info :msg "Stopping webserver")
     (http/stop (:service this))
     (dissoc this :service)
     this))
