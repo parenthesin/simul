@@ -1,10 +1,12 @@
 (ns org.parenthesin.server
   (:require [com.stuartsierra.component :as component]))
 
-(defn start-system! [system-map system]
+(def system (atom nil))
+
+(defn start-system! [system-map]
   (->> system-map
        component/start
        (reset! system)))
 
-(defn stop-system! [system]
+(defn stop-system! []
   (swap! system #(component/stop %)))

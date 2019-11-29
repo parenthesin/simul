@@ -33,7 +33,7 @@
   (-> service-map
       http/default-interceptors))
 
-(defn- dev-init [env service-map]
+(defn- dev-init [service-map]
   (-> service-map
       (merge {:env                   :dev
               ::http/join?           false
@@ -45,7 +45,7 @@
 
 (defn- system-init [{env :environment} service-map]
   (if (= env "dev")
-    (dev-init env service-map)
+    (dev-init service-map)
     (prod-init service-map)))
 
 (defrecord WebServer [config routes storage]
