@@ -11,7 +11,7 @@
 
 (defn get-version
   [{{config :config} :components}]
-  (response! {:version (:simul-version config) :a "a"} 200))
+  (response! {:version (:simul-version config)} 200))
 
 (def common-interceptors
   [(body-params/body-params) http/json-body])
