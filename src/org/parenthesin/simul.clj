@@ -4,13 +4,11 @@
             [org.parenthesin.server :as server])
   (:gen-class))
 
-(def system (atom nil))
-
 (defn -main
   "The entry-point for 'lein run'"
   [& args]
   (-> (components/build-system-map)
-      (server/start-system! system)))
+      server/start-system!))
 
 (defn run-dev
   "The entry-point for 'lein run-dev'"

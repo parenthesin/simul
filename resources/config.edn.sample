@@ -1,3 +1,5 @@
 {:webserver-port       3000
- :cors-allowed-origins ".*"
+ :webserver-host       "localhost"
+ :environment          "dev"
+ :cors-allowed-origins "http://localhost:8080"
  :unsplash-access-key  "YOUR-UNSPLASH-ACCESS-KEY"}
