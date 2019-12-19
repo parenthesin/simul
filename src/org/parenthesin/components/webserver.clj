@@ -3,7 +3,8 @@
             [io.pedestal.interceptor.helpers :refer [before]]
             [io.pedestal.http :as http]
             [io.pedestal.http.route :as route]
-            [io.pedestal.log :as log]))
+            [io.pedestal.log :as log]
+            [org.parenthesin.pathom.parser :as pathom-parser]))
 
 (defn- add-system [service]
   (before (fn [context] (assoc-in context [:request :components] service))))
@@ -17,10 +18,11 @@
              #(vec (->> % (cons (add-system service))))))
 
 (defn- base-service [routes config]
+  (println (set (concat (deref routes) pathom-parser/routes)))
   {:env :prod
    ::http/type :jetty
    ::http/router :prefix-tree
-   ::http/routes #(route/expand-routes (deref routes))
+   ::http/routes #(route/expand-routes (set (concat (deref routes) pathom-parser/routes)))
    ::http/allowed-origins {:creds true
                            :allowed-origins [(:cors-allowed-origins config)]}
    ::http/secure-headers {:content-security-policy-settings {:object-src "'none'"
