@@ -1,22 +1,25 @@
 (ns org.parenthesin.pathom.parser
   (:require
     [org.parenthesin.controllers.splashed.resolvers :as splashed.res]
+    [org.parenthesin.controllers.splashed.mutations :as splashed.mut]
     [com.wsscode.pathom.core :as p]
     [com.wsscode.pathom.connect :as pc]
     [com.wsscode.pathom.profile :as pp]
     [pathom.pedestal :refer [pathom-routes make-parser]]))
 
-(def resolvers [splashed.res/resolvers])
+(def resolvers [splashed.res/resolvers splashed.mut/mutations])
 
 (def pathom-parser
   (p/parser {::p/env     {::p/reader               [p/map-reader
-                                                      pc/reader2
-                                                      pc/ident-reader
-                                                      p/env-placeholder-reader]
-                            ::pc/resolver-dispatch   pc/resolver-dispatch-embedded
-                            ::pc/mutate-dispatch     pc/mutation-dispatch-embedded
-                            ::p/placeholder-prefixes #{">"}
-                            ::db                     (atom {})}
+                                                    pc/reader2
+                                                    pc/ident-reader
+                                                    pc/index-reader
+                                                    p/env-placeholder-reader
+                                                    ]
+                          ;::pc/resolver-dispatch   pc/resolver-dispatch-embedded
+                          ;::pc/mutate-dispatch     pc/mutation-dispatch-embedded
+                          ::p/placeholder-prefixes #{">"}
+                          ::pc/mutation-join-globals [:tempids]}
              ::p/mutate  pc/mutate
              ::p/plugins [(pc/connect-plugin {::pc/register resolvers})
                           p/error-handler-plugin
