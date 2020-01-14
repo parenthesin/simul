@@ -5,7 +5,7 @@ GraphQL BFF for our live demo Web App
 
 ## Setup
 
-Based on config.clj.sample file create your own config.edn, you will need all Api Keys listed inside the sample file for this step.
+Based on `config.edn.sample` file create your own `config.edn`, you will need all Api Keys listed inside the sample file for this step.
 ```bash
 $ cp resources/config.edn.sample resources/config.edn
 ```
